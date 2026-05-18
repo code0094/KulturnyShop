@@ -69,17 +69,6 @@
       font-weight: 800;
     }
 
-    .mark {
-      display: grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      border-radius: 8px;
-      background: var(--ink);
-      color: #fff;
-      font-weight: 900;
-    }
-
     .nav {
       display: flex;
       flex-wrap: wrap;
@@ -110,7 +99,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.72fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: 42px;
       align-items: center;
     }
@@ -180,87 +169,6 @@
       color: #fff;
       font-weight: 800;
       text-decoration: none;
-    }
-
-    .button.secondary {
-      background: #fff;
-      color: var(--ink);
-    }
-
-    .bot-preview {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #f6f7f9;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .phone-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 16px;
-      background: #202029;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .phone-body {
-      padding: 18px;
-    }
-
-    .message {
-      width: fit-content;
-      max-width: 92%;
-      margin-bottom: 12px;
-      padding: 12px 14px;
-      border-radius: 8px;
-      background: #fff;
-      border: 1px solid var(--line);
-      color: #2b2b34;
-      font-size: 15px;
-    }
-
-    .message.user {
-      margin-left: auto;
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 12px 0 18px;
-    }
-
-    .chip {
-      padding: 8px 10px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .result {
-      display: grid;
-      gap: 8px;
-      padding: 14px;
-      border: 1px solid rgba(15, 118, 110, 0.22);
-      border-radius: 8px;
-      background: var(--soft);
-    }
-
-    .result strong {
-      font-size: 16px;
-    }
-
-    .result span {
-      color: var(--muted);
-      font-size: 14px;
     }
 
     section {
@@ -458,8 +366,7 @@
   <header class="topbar">
     <div class="shell">
       <div class="brand">
-        <div class="mark">18+</div>
-        <span>Культурный шоп</span>
+        <span>Культурный шоп - деловое предложение</span>
       </div>
       <nav class="nav" aria-label="Разделы предложения">
         <a href="#idea">Варианты</a>
@@ -480,29 +387,6 @@
           <p class="lead">Официальная страница, Telegram-бот, интерактивная вкусокарта, админка и дальнейшая автоматизация. Можно начать с малого и выбрать тот формат, который даст магазину больше пользы.</p>
           <div class="actions">
             <a class="button" href="#mvp">Посмотреть пакеты</a>
-            <a class="button secondary" href="./proposal.md">Открыть Markdown</a>
-          </div>
-        </div>
-
-        <div class="bot-preview" aria-label="Пример интерфейса Telegram-бота">
-          <div class="phone-top">
-            <span>Цифровой сервис</span>
-            <span>3 магазина</span>
-          </div>
-          <div class="phone-body">
-            <div class="message">Выберите модуль: адреса, бот, вкусокарта или админка.</div>
-            <div class="chips">
-              <span class="chip">Сайт</span>
-              <span class="chip">Бот</span>
-              <span class="chip">Вкусокарта</span>
-              <span class="chip">Админка</span>
-            </div>
-            <div class="message user">Начать с вкусокарты</div>
-            <div class="result">
-              <strong>Рекомендуемый MVP</strong>
-              <span>Сайт сети + Telegram-бот + каталог вкусов по 3 точкам.</span>
-              <span>Без корзины, оплаты, доставки и онлайн-заказов.</span>
-            </div>
           </div>
         </div>
       </div>
@@ -518,7 +402,7 @@
           <article class="card">
             <div class="icon">01</div>
             <h3>Официальная страница</h3>
-            <p>Адреса 3 точек, режим работы, карты, контакты, ссылки на VK и Telegram, 18+ предупреждение.</p>
+            <p>Адреса 3 точек, режим работы, карты, контакты, ссылки на VK и Telegram.</p>
           </article>
           <article class="card">
             <div class="icon">02</div>
@@ -544,7 +428,7 @@
           <article class="card">
             <h3>Клиентские модули</h3>
             <ul class="list">
-              <li>Сайт-страница сети 18+.</li>
+              <li>Сайт-страница сети.</li>
               <li>Telegram-бот с адресами, графиком и маршрутами.</li>
               <li>Интерактивная вкусокарта вместо распечаток.</li>
               <li>Поиск и фильтры по ассортименту.</li>
@@ -575,7 +459,7 @@
           <div class="step">
             <b>1</b>
             <h3>Клиент сканирует QR</h3>
-            <p>Открывает сайт или бот сети 18+.</p>
+            <p>Открывает сайт или бот сети.</p>
           </div>
           <div class="step">
             <b>2</b>
@@ -609,7 +493,7 @@
               <li>Сайт-страница сети.</li>
               <li>Адреса, график, карты и контакты.</li>
               <li>Ссылки на VK и Telegram.</li>
-              <li>Возрастной дисклеймер 18+.</li>
+              <li>Деловая информационная подача.</li>
               <li>Ориентир: 25 000 - 45 000 ₽.</li>
             </ul>
           </article>
@@ -617,7 +501,7 @@
             <h3>Бот-справочник</h3>
             <ul class="list">
               <li>Все из первого пакета.</li>
-              <li>Telegram-бот 18+.</li>
+              <li>Telegram-бот.</li>
               <li>Выбор магазина и маршруты.</li>
               <li>FAQ и сервисные сообщения.</li>
               <li>Ориентир: 45 000 - 80 000 ₽.</li>
@@ -707,7 +591,7 @@
           <article class="card">
             <h3>В проекте есть</h3>
             <ul class="list">
-              <li>Возрастной экран 18+.</li>
+              <li>Информационный формат для офлайн-точек.</li>
               <li>Информация об офлайн-точках.</li>
               <li>Справочный каталог для ознакомления.</li>
               <li>Админка для актуальности данных.</li>
@@ -729,7 +613,7 @@
   </main>
 
   <footer class="footer">
-    <div class="shell">Деловое предложение. Информационный сервис для офлайн-точек 18+.</div>
+    <div class="shell">Деловое предложение. Информационный сервис для офлайн-точек.</div>
   </footer>
 </body>
 </html>
