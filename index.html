@@ -386,6 +386,40 @@
       color: #4b3a15;
     }
 
+    .process {
+      counter-reset: process;
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .process li {
+      counter-increment: process;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+    }
+
+    .process li::before {
+      content: counter(process);
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 900;
+    }
+
     .footer {
       padding: 34px 0;
       border-top: 1px solid var(--line);
@@ -603,6 +637,34 @@
       </div>
     </section>
 
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <h2>Как предлагаем начать</h2>
+          <p>Первый шаг не обязывает сразу выбирать большой пакет. Достаточно коротко обсудить текущий формат ассортимента и выбрать полезный старт.</p>
+        </div>
+        <div class="grid two">
+          <ol class="process">
+            <li>Созвониться на 30 минут и выбрать подходящий первый этап.</li>
+            <li>Посмотреть текущие распечатки, таблицы или другой формат ассортимента.</li>
+            <li>Уточнить количество позиций, магазинов, сотрудников и нужные фильтры.</li>
+            <li>Зафиксировать состав работ, сроки и точную стоимость.</li>
+            <li>Запустить первую версию, показать демо и доработать по обратной связи.</li>
+          </ol>
+          <article class="card">
+            <h3>Что нужно для оценки</h3>
+            <ul class="list">
+              <li>Адреса, график и контакты 3 точек.</li>
+              <li>Текущие распечатки или таблица со вкусами.</li>
+              <li>Категории и фильтры, которые удобно использовать.</li>
+              <li>Понимание, кто будет обновлять данные.</li>
+              <li>Ссылки на VK и Telegram.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="price">
       <div class="shell grid two">
         <div class="section-head">
@@ -619,6 +681,24 @@
 
     <section class="band" id="legal">
       <div class="shell">
+        <div class="section-head">
+          <h2>Гарантии и формат работы</h2>
+          <p>Чтобы запуск был спокойным, заранее фиксируем границы работ, показываем демо и оставляем время на исправление технических ошибок после релиза.</p>
+        </div>
+        <div class="grid three" style="margin-bottom: 38px;">
+          <article class="card">
+            <h3>До старта</h3>
+            <p>Фиксируем состав работ, сроки и точную стоимость выбранного этапа.</p>
+          </article>
+          <article class="card">
+            <h3>В процессе</h3>
+            <p>Показываем промежуточную демо-версию и собираем обратную связь.</p>
+          </article>
+          <article class="card">
+            <h3>После запуска</h3>
+            <p>Даем 14 дней на исправление технических ошибок и передаем доступы.</p>
+          </article>
+        </div>
         <div class="section-head">
           <h2>Юридически аккуратный подход</h2>
           <p>Проект позиционируется как информационный сервис для офлайн-магазинов, а не как дистанционная продажа.</p>
