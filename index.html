@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Культурный шоп — деловое предложение</title>
+  <meta name="description" content="Деловое предложение: интерактивная вкусокарта и цифровой сервис для сети Культурный шоп.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17171b;
+      --muted: #62626f;
+      --line: #dedee7;
+      --paper: #fbfbfd;
+      --panel: #ffffff;
+      --accent: #0f766e;
+      --accent-2: #e11d48;
+      --warm: #f59e0b;
+      --soft: #ecfdf5;
+      --shadow: 0 18px 50px rgba(20, 20, 30, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(251, 251, 253, 0.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar .shell {
+      display: flex;
+      min-height: 66px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
+
+    .mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a {
+      padding: 8px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .nav a:hover {
+      background: #f0f0f5;
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 74px 0 44px;
+      background:
+        linear-gradient(120deg, rgba(15, 118, 110, 0.13), rgba(225, 29, 72, 0.07) 48%, rgba(245, 158, 11, 0.13)),
+        var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.72fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 10px;
+      border: 1px solid rgba(15, 118, 110, 0.22);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(42px, 7vw, 78px);
+    }
+
+    h2 {
+      font-size: clamp(30px, 4.2vw, 48px);
+    }
+
+    h3 {
+      font-size: 21px;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .lead {
+      max-width: 690px;
+      margin-top: 22px;
+      font-size: 20px;
+      color: #33333d;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .bot-preview {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f6f7f9;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .phone-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: #202029;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .phone-body {
+      padding: 18px;
+    }
+
+    .message {
+      width: fit-content;
+      max-width: 92%;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: #2b2b34;
+      font-size: 15px;
+    }
+
+    .message.user {
+      margin-left: auto;
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 18px;
+    }
+
+    .chip {
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .result {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border: 1px solid rgba(15, 118, 110, 0.22);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .result strong {
+      font-size: 16px;
+    }
+
+    .result span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      display: grid;
+      max-width: 760px;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      display: grid;
+      gap: 12px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      min-height: 100%;
+    }
+
+    .icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 8px;
+      background: #eefaf8;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .band {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+    }
+
+    .step {
+      padding: 22px;
+      background: #fff;
+    }
+
+    .step b {
+      display: inline-grid;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 14px;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .price {
+      display: grid;
+      gap: 18px;
+      padding: 28px;
+      border: 1px solid rgba(225, 29, 72, 0.24);
+      border-radius: 8px;
+      background: linear-gradient(135deg, #fff, #fff7f8);
+    }
+
+    .price strong {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--muted);
+    }
+
+    .list li::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 8px;
+      height: 8px;
+      margin-top: 9px;
+      border-radius: 2px;
+      background: var(--accent);
+    }
+
+    .note {
+      padding: 18px;
+      border-left: 4px solid var(--warm);
+      background: #fffbeb;
+      color: #4b3a15;
+    }
+
+    .footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .topbar {
+        position: static;
+      }
+
+      .topbar .shell,
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar .shell {
+        align-items: flex-start;
+        padding: 14px 0;
+      }
+
+      .grid.three,
+      .grid.two,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 46px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell">
+      <div class="brand">
+        <div class="mark">18+</div>
+        <span>Культурный шоп</span>
+      </div>
+      <nav class="nav" aria-label="Разделы предложения">
+        <a href="#idea">Идея</a>
+        <a href="#features">Функции</a>
+        <a href="#mvp">MVP</a>
+        <a href="#price">Стоимость</a>
+        <a href="#legal">Подход</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow">Деловое предложение для сети из 3 магазинов</div>
+          <h1>Интерактивная вкусокарта вместо бумажных распечаток</h1>
+          <p class="lead">Telegram-бот и страница сети для офлайн-магазинов: актуальный список вкусов, поиск, фильтры, наличие по точкам и простая админка для сотрудников.</p>
+          <div class="actions">
+            <a class="button" href="#mvp">Состав MVP</a>
+            <a class="button secondary" href="./proposal.md">Открыть Markdown</a>
+          </div>
+        </div>
+
+        <div class="bot-preview" aria-label="Пример интерфейса Telegram-бота">
+          <div class="phone-top">
+            <span>Вкусокарта</span>
+            <span>Нижний Новгород</span>
+          </div>
+          <div class="phone-body">
+            <div class="message">Подтвердите возраст 18+ и выберите магазин.</div>
+            <div class="chips">
+              <span class="chip">Точка 1</span>
+              <span class="chip">Точка 2</span>
+              <span class="chip">Точка 3</span>
+            </div>
+            <div class="message user">Манго без холодка</div>
+            <div class="result">
+              <strong>Найдено 8 вариантов</strong>
+              <span>Фильтры: манго, без холодка, в наличии в выбранной точке.</span>
+              <span>Карточка позиции: бренд, объем, крепость, описание, наличие.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="idea">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Что именно предлагаем</h2>
+          <p>Не интернет-магазин и не скидочную систему. Сильная сторона сети уже в цене, поэтому задача проекта — сделать выбор быстрее, список вкусов актуальнее, а работу сотрудников спокойнее.</p>
+        </div>
+        <div class="grid three">
+          <article class="card">
+            <div class="icon">01</div>
+            <h3>Вкусокарта в Telegram</h3>
+            <p>Клиент выбирает точку, ищет вкус и смотрит информацию для ознакомления перед покупкой в офлайн-магазине.</p>
+          </article>
+          <article class="card">
+            <div class="icon">02</div>
+            <h3>Админка для команды</h3>
+            <p>Сотрудники обновляют позиции, скрывают закончившиеся вкусы и отмечают наличие по каждой точке.</p>
+          </article>
+          <article class="card">
+            <div class="icon">03</div>
+            <h3>Страница сети</h3>
+            <p>Адреса, режим работы, маршруты, ссылки на VK и Telegram, QR-код на бот и аккуратная 18+ подача.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="features">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Функции бота</h2>
+          <p>Первый запуск можно сделать компактным, но сразу полезным для покупателей, продавцов и владельца.</p>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Для покупателей</h3>
+            <ul class="list">
+              <li>Подтверждение возраста 18+.</li>
+              <li>Выбор одной из 3 точек.</li>
+              <li>Поиск по названию, бренду и описанию.</li>
+              <li>Фильтры по вкусу, крепости, объему и холодку.</li>
+              <li>Контакты, режим работы и маршрут до магазина.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Для сотрудников</h3>
+            <ul class="list">
+              <li>Добавление и редактирование позиций.</li>
+              <li>Отметка наличия по точкам.</li>
+              <li>Скрытие закончившихся позиций.</li>
+              <li>Загрузка ассортимента из таблицы.</li>
+              <li>Быстрый поиск ответа на вопрос клиента.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <h2>Как это работает в магазине</h2>
+          <p>QR-код можно разместить на стойке, рядом с текущими распечатками или в Telegram-канале.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <b>1</b>
+            <h3>Клиент сканирует QR</h3>
+            <p>Открывает бот с актуальной вкусокартой.</p>
+          </div>
+          <div class="step">
+            <b>2</b>
+            <h3>Выбирает точку</h3>
+            <p>Наличие показывается по конкретному магазину.</p>
+          </div>
+          <div class="step">
+            <b>3</b>
+            <h3>Ищет вкус</h3>
+            <p>Использует поиск или фильтры по параметрам.</p>
+          </div>
+          <div class="step">
+            <b>4</b>
+            <h3>Обращается к продавцу</h3>
+            <p>Покупка происходит только в офлайн-точке.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="mvp">
+      <div class="shell">
+        <div class="section-head">
+          <h2>MVP за 3-4 недели</h2>
+          <p>Первый этап запускает рабочий инструмент, который можно сразу проверить на всех трех магазинах.</p>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Входит в запуск</h3>
+            <ul class="list">
+              <li>Telegram-бот с возрастным экраном.</li>
+              <li>Каталог вкусов, поиск и базовые фильтры.</li>
+              <li>Наличие по 3 точкам.</li>
+              <li>Админка для ассортимента.</li>
+              <li>Загрузка из таблицы.</li>
+              <li>Страница сети с адресами и ссылками.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Можно добавить позже</h3>
+            <ul class="list">
+              <li>Расширенную аналитику поисковых запросов.</li>
+              <li>Импорт из учетной системы.</li>
+              <li>Отдельный режим продавца.</li>
+              <li>Автогенерацию печатной вкусокарты.</li>
+              <li>Настройку карточек в Яндекс Картах и 2ГИС.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="price">
+      <div class="shell grid two">
+        <div class="section-head">
+          <h2>Ориентир по стоимости</h2>
+          <p>Финальную смету лучше зафиксировать после просмотра текущих распечаток, количества позиций и формата таблиц.</p>
+        </div>
+        <div class="price">
+          <p>Базовый MVP</p>
+          <strong>180 000 - 300 000 ₽</strong>
+          <p>Поддержка после запуска: 20 000 - 40 000 ₽ в месяц.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="legal">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Юридически аккуратный подход</h2>
+          <p>Проект позиционируется как информационный сервис для офлайн-магазинов, а не как дистанционная продажа.</p>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>В проекте есть</h3>
+            <ul class="list">
+              <li>Возрастной экран 18+.</li>
+              <li>Информация об офлайн-точках.</li>
+              <li>Справочный каталог для ознакомления.</li>
+              <li>Админка для актуальности данных.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>В проекте нет</h3>
+            <ul class="list">
+              <li>Корзины и онлайн-оплаты.</li>
+              <li>Доставки и оформления заказа.</li>
+              <li>Кнопок «купить» или «заказать».</li>
+              <li>Агрессивных рекламных формулировок.</li>
+            </ul>
+          </article>
+        </div>
+        <p class="note" style="margin-top: 18px;">Формулировки интерфейса можно дополнительно согласовать с юристом или ответственным сотрудником сети перед запуском.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">Деловое предложение. Информационный сервис для офлайн-точек 18+.</div>
+  </footer>
+</body>
+</html>
